@@ -10,22 +10,22 @@
       - Windows 10, 11
         · Home Edition : SMB 파일 공유 동시 접속 최대 10명
         · Pro Edition  : SMB 파일 공유 동시 접속 최대 20명
-          ※ 원격 데스크톱(RDP)은 Home 미지원, Pro는 동시 1세션만 허용
+          ※ 원격 데스크톱(RDP) : Home 미지원 / Pro는 동시 1세션만 허용
     서버용
       - Windows Server 2016 / 2019 / 2022
 
   ▶ Linux (무료 · 오픈소스)
   -------------------------
     종류
-      - CentOS (2024년 공식 지원 종료 → AlmaLinux, Rocky Linux로 대체 추세)
+      - CentOS  (2024년 공식 지원 종료 → AlmaLinux, Rocky Linux로 대체 추세)
       - Red Hat Enterprise Linux (RHEL)
       - Ubuntu
       - SUSE Linux
       - 붉은별 (북한)
 
     패키지 설치 명령어
-      - yum install [패키지명]   → CentOS, RHEL 계열
-      - apt install [패키지명]   → Ubuntu, Debian 계열
+      - yum install [패키지명]   →  CentOS, RHEL 계열
+      - apt install [패키지명]   →  Ubuntu, Debian 계열
 
   ▶ Unix (유료 · 서버용)
   -------------------------
@@ -40,19 +40,19 @@
   ▶ 디스크 / 디렉토리 확인
   -------------------------
     du       디렉토리별 용량 확인 (disk usage)
-    df       디스크 파티션별 사용량 확인 (disk free)
-    tree     디렉토리 구조 트리 형태로 출력
-             설치 : sudo apt install tree
-    ls       현재 위치의 파일·디렉토리 목록 출력
-    ls -l    권한·소유자·크기·날짜 포함 상세 출력
-    pwd      현재 작업 경로 출력 (print working directory)
+    df        디스크 파티션별 사용량 확인 (disk free)
+    tree      디렉토리 구조 트리 형태로 출력
+               ※ sudo apt install tree
+    ls         현재 위치의 파일·디렉토리 목록 출력
+    ls -l      권한·소유자·크기·날짜 포함 상세 출력
+    pwd     현재 작업 경로 출력 (print working directory)
 
   ▶ 경로 이동 (cd)
   -------------------------
     cd [디렉토리명]   현재 위치 기준 하위 디렉토리로 이동
-    cd ..             상위 디렉토리로 이동
-    cd ~              홈 디렉토리(/home/계정명)로 이동
-    cd /              최상위(루트) 디렉토리로 이동
+    cd ..                   상위 디렉토리로 이동
+    cd ~                  홈 디렉토리 (/home/계정명) 로 이동
+    cd /                   최상위(루트) 디렉토리로 이동
 
     ※ Windows C:\Users\계정명  ↔  Linux /home/계정명
 
@@ -60,7 +60,7 @@
   3. 파일 퍼미션 (ls -l)
 -------------------------------------------------------------------------------
 
-  출력 형식  →  [파일유형] [소유자] [그룹] [기타]  링크수  소유자  그룹  크기  날짜  이름
+  출력 형식  →  [파일유형][소유자][그룹][기타]  링크수  소유자  그룹  크기  날짜  이름
 
   ▶ 파일 유형
   -------------------------
@@ -69,17 +69,17 @@
 
   ▶ 권한 기호
   -------------------------
-    r   읽기  (read,    숫자값 4)
-    w   쓰기  (write,   숫자값 2)
-    x   실행  (execute, 숫자값 1)
-    -   해당 권한 없음
+    r    읽기  (read,    숫자 값 4)
+    w   쓰기  (write,   숫자 값 2)
+    x    실행  (execute, 숫자 값 1)
+    -    해당 권한 없음
 
   ▶ 퍼미션 예시
   -------------------------
-    rwx------   (700)   소유자만 모든 권한, 나머지 접근 불가
+    rwx------   (700)    소유자만 모든 권한, 나머지 접근 불가
     rwxrwx---   (770)   소유자 + 그룹 모든 권한
-    rwxr-xr-x   (755)   웹 개발 표준 퍼미션
-    r--r--r--   (444)   모든 사용자 읽기만 가능
+    rwxr-xr-x   (755)    웹 개발 표준 퍼미션
+    r--r--r--   (444)      모든 사용자 읽기만 가능
     rw-rw-rw-   (666)   모든 사용자 읽기 + 쓰기 가능
 
   ▶ chmod - 숫자 방식
@@ -93,21 +93,21 @@
     대상 기호 :  u (소유자)  /  g (그룹)  /  o (기타)  /  a (전체)
     연산 기호 :  + (권한 추가)  /  - (권한 제거)
 
-    chmod o+r test.txt   기타 사용자에게 읽기 권한 추가  →  -rwx---r--
-    chmod g+r test.txt   그룹에게 읽기 권한 추가         →  -rwxr--r--
-    chmod u-r test.txt   소유자에서 읽기 권한 제거        →  -rw-r--r--
-    chmod a+r test.txt   모든 사용자에게 읽기 권한 추가
+    chmod o+r test.txt    기타 사용자에게 읽기 권한 추가  →  -rwx---r--
+    chmod g+r test.txt    그룹에게 읽기 권한 추가         →  -rwxr--r--
+    chmod u-r test.txt     소유자에서 읽기 권한 제거        →  -rw-r--r--
+    chmod a+r test.txt    모든 사용자에게 읽기 권한 추가
 
 -------------------------------------------------------------------------------
   4. 사용자 및 그룹 관리 명령어
 -------------------------------------------------------------------------------
 
-    sudo useradd [계정명]                  사용자 계정 생성 (개인 그룹도 자동 생성)
-    sudo passwd  [계정명]                  사용자 비밀번호 설정 / 변경
+    sudo useradd [계정명]                    사용자 계정 생성 (개인 그룹도 자동 생성)
+    sudo passwd  [계정명]                    사용자 비밀번호 설정 / 변경
     sudo groupadd [그룹명]                 그룹 생성
-    sudo gpasswd -a [계정명] [그룹명]      계정을 그룹에 추가
+    sudo gpasswd -a [계정명] [그룹명]   계정을 그룹에 추가
     sudo chgrp [그룹명] [파일명]           파일의 소유 그룹 변경
-    sudo chown [계정명] [파일명]           파일의 소유자 변경
+    sudo chown [계정명] [파일명]          파일의 소유자 변경
 
 -------------------------------------------------------------------------------
   5. 리눅스 설치 방법
@@ -122,28 +122,28 @@
 
     -- 네트워크 확인 --
     ping 8.8.8.8       인터넷 연결 확인 (Ctrl+C 로 종료)
-    ifconfig           IP 주소 확인 (설치 : sudo apt install net-tools)
+    ifconfig            IP 주소 확인  ※ sudo apt install net-tools
 
     -- 패키지 설치 --
-    sudo apt update                           패키지 목록 최신화
-    sudo apt install mariadb-server       MariaDB(MySQL) 설치
-    sudo apt install python3                Python3 설치
+    sudo apt update                          패키지 목록 최신화
+    sudo apt install mariadb-server      MariaDB(MySQL) 설치
+    sudo apt install python3               Python3 설치
 
     -- MariaDB 서비스 관리 --
-    sudo systemctl status  mariadb       서비스 상태 확인
-    sudo systemctl enable  mariadb     부팅 시 자동 시작 등록
-    sudo systemctl disable mariadb      자동 시작 해제
-    sudo systemctl restart mariadb       서비스 재시작
-    q                                              상태 화면 종료
+    sudo systemctl status  mariadb         서비스 상태 확인
+    sudo systemctl enable  mariadb       부팅 시 자동 시작 등록
+    sudo systemctl disable mariadb        자동 시작 해제
+    sudo systemctl restart mariadb         서비스 재시작
+    q                                                 상태 화면 종료
 
-    -- MariaDB 초기 설정 --
-    sudo mysql -u root                      MariaDB 콘솔 접속
+    -- MariaDB 콘솔 접속 --
+    sudo mysql -u root
 
-    # root 계정 생성 및 전체 권한 부여
+    -- root 계정 생성 및 전체 권한 부여 --
     CREATE USER 'root'@'%' IDENTIFIED BY 'admin';
     GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY 'admin';
 
-    # 일반 계정(flask) 생성 및 전용 DB 권한 부여
+    -- 일반 계정(flask) 생성 및 전용 DB 권한 부여 --
     CREATE USER 'flask'@'%' IDENTIFIED BY 'pythonDB';
     CREATE DATABASE flaskDB;
     GRANT ALL PRIVILEGES ON flaskDB.* TO 'flask'@'%';
@@ -152,8 +152,7 @@
 
     -- 외부 접속 허용 설정 (bind-address 변경) --
     sudo nano /etc/mysql/mariadb.conf.d/50-server.cnf
-      변경 전 : bind-address = 127.0.0.1   (40행 부근)
-      변경 후 : bind-address = 0.0.0.0
+    bind-address = 0.0.0.0
     sudo systemctl restart mariadb
 
     -- 방화벽(UFW) 설정 --
@@ -163,29 +162,31 @@
     sudo ufw reload
     sudo ufw status verbose               방화벽 규칙 확인
 
+    -- 가상 환경 생성 및 실행 --
+    cd ~/miniproject/the-road-library
+    sudo apt install python3.12-venv
+    python3 -m venv venv
+    source venv/bin/activate
+    pip install -r requirements.txt
+    python3 app.py
+
+    ※ VM 스냅샷 : VirtualBox에서 설정 변경 전 스냅샷을 찍어두면,
+       		         문제 발생 시 해당 시점으로 되돌릴 수 있음
 
   ▶ 방법 2. WSL (Windows Subsystem for Linux)
   -------------------------
     Microsoft Hyper-V 기반 경량 가상 머신 · Windows와 파일 시스템 공유 가능
 
-    1) Windows 기능 활성화
-       시작 → 우클릭 → 설치된 앱 → '기능' 검색
-       → 기타 Windows 기능 → 아래 두 항목 체크 후 재부팅
+    1) Windows 기능 활성화 : 시작 → 우클릭 → 설치된 앱 → '기능' 검색 → 기타 Windows 기능
+				        → 아래 두 항목 체크 후 재부팅
          · Linux용 Windows 하위 시스템
          · 가상 머신 플랫폼
 
-    2) Microsoft Store에서 설치
-       Windows Subsystem for Linux 검색 후 설치
-       (또는 https://www.microsoft.com/store/productId/9P9TQF7MRM4R)
+    2) Microsoft Store에서 'Windows Subsystem for Linux' 검색 후 설치
+       (https://www.microsoft.com/store/productId/9P9TQF7MRM4R)
 
-    3) CMD에서 Ubuntu 배포판 설치
-       wsl --install -d Ubuntu-24.04
+    3) CMD에서 Ubuntu 배포판 설치 : wsl --install -d Ubuntu-24.04
 
     4) Linux 사용자 계정 생성 (설치 완료 후 안내에 따라 입력)
 
-    5) VS Code 연동
-       크롬에서 'vscode' 검색 후 다운로드 및 WSL 확장 설치
-
-  ※ VM 스냅샷
-     VirtualBox에서 설정 변경 전 스냅샷을 찍어두면
-     문제 발생 시 해당 시점으로 되돌릴 수 있음
+    5) VS Code 연동 : 크롬에서 'vscode' 검색 후 다운로드 및 WSL 확장 설치
