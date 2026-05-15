@@ -1,0 +1,48 @@
+[리눅스 설정 방법]
+
+*  GUI를 통해 우분투 설치한 후 CUI로 변경
+
+1. 데이터스토어 ISO 업로드
+2. 가상머신 AI용 GPU 추가
+3. DVD로 부팅한 후 우분투 설치
+4. ID · PW 생성
+5. 로그인
+6. GUI 오른쪽 상단 네트워크 (IP 주소 할당)
+7. PING WWW.NAVER.COM
+8. in terminal
+1) sudo apt update -y
+2) 사용자 계정 (조원) 설정
+3) ssh
+- sudo apt install openssh-server -y
+- sudo systemctl status ssh
+- sudo systemctl enable ssh
+- sudo systemctl start ssh
+- sudo systemctl restart ssh
+- sudo systemctl status ssh  
+4) 방화벽 설정
+- apt install -y uwf
+- sudo ufw allow 22/tcp
+- sudo ufw enable
+- sudo ufw status
+- sudo ufw reload
+9. 리눅스에 GPU 연결
+1) sudo apt update
+2) sudo apt upgrade -y
+3) sudo apt install build-essential dkms
+4) ubuntu-drivers devices
+5) sudo ubuntu-drivers autoinstall
+6) sudo apt install nvidia-driver-535
+7) sudo apt install open-vm-tools open-vm-tools-desktop -y
+8) sudo systemctl start open-vm-tools
+9) sudo systemctl enable open-vm-tools
+10) 재부팅 후 로그인
+11) ubuntu-drivers devices
+12) nvidia-smi
+13) sudo systemctl set-default multi-user.target
+14) reboot
+* in PowerShell (관리자 전용) → ssh id@IP 주소 → YES → 암호 입력 
+15) sudo apt install python3-pip -y
+16) pip install torch torchvision torchaudio
+17) python3
+18) exit()
+10. vscode 연결 
